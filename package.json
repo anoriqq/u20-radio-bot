@@ -4,5 +4,8 @@
   "description": "U20やさしいかくめいラボで運用するラジオ収録･放送bot",
   "main": "index.js",
   "author": "show0317sw <tunakan_8584@yahoo.co.jp>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
 }
