@@ -4,6 +4,7 @@ require('dotenv').config();
 // モジュールの読み込み
 const Discord = require('discord.js');
 const RichEmbed = Discord.RichEmbed;
+const ytdl = require('ytdl-core');
 
 // インスタンスを作成
 const Client = new Discord.Client();
@@ -43,7 +44,7 @@ Client.on('message', m=>{
         if(!queue.get(guildId)){
           const voiceChannel = channel;
           const textChannel = m.channel;
-          queue.set(guildId, {connection, voiceChannel, textChannel, controller: null, audioList: [], volume: 0.1, playing: [0, false]});
+          queue.set(guildId, {connection, voiceChannel, textChannel, controller: null, audioList: [], volume: 0.5, playing: [0, false]});
         }
         m.channel.send('接続しました');
         controller(guildId);
@@ -145,6 +146,7 @@ function statusManager(messageReaction, user){
     switch(reaction){
       case '⏯':
         console.log('再生/一時停止');
+        controlPlayStop(guildId);
         break;
       case '⏹':
         console.log('停止');
@@ -201,4 +203,19 @@ function reactionManager(m){
           });
       });
   });
+}
+
+// 再生/一時停止
+function controlPlayStop(guildId){
+  // if(!queue.get(guildId).playing[1]){
+    const stream = ytdl(`https://www.youtube.com/watch?v=${queue.get(guildId).audioList[queue.get(guildId).playing[0]]}`);
+    const dispatcher = queue.get(guildId).connection.playStream(stream)
+    dispatcher.setVolumeLogarithmic(queue.get(guildId).volume / 5);
+    queue.get(guildId).playing[1] = true;
+    queue.get(guildId).textChannel.send('再生中');
+  // }else{
+  //   queue.get(guildId).connection.dispatcher.pause();
+  //   queue.get(guildId).playing[1] = false;
+  //   queue.get(guildId).textChannel.send('一時停止');
+  // }
 }
