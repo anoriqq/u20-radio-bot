@@ -6,9 +6,12 @@
   "author": "show0317sw <tunakan_8584@yahoo.co.jp>",
   "license": "MIT",
   "dependencies": {
+    "bufferutil": "^4.0.1",
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
+    "libsodium-wrappers": "^0.7.3",
     "node-opus": "^0.3.1",
+    "uws": "^99.0.0",
     "ytdl-core": "^0.28.3"
   }
 }
