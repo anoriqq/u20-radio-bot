@@ -43,7 +43,7 @@ Client.on('message', m=>{
         if(!queue.get(guildId)){
           const voiceChannel = channel;
           const textChannel = m.channel;
-          queue.set(guildId, {connection, voiceChannel, textChannel, controller: null, status: {audio: [], playing: false, volume: 0.5}});
+          queue.set(guildId, {connection, voiceChannel, textChannel, controller: null, audioList: [], volume: 0.1, playing: [0, false]});
         }
         m.channel.send('接続しました');
         controller(guildId);
@@ -61,6 +61,40 @@ Client.on('message', m=>{
       m.channel.send('切断しました');
     }else{
       m.channel.send('ボイスチャンネルに接続されていません');
+    }
+  }
+
+  // queueコマンド
+  else if(command === 'queue'){
+    if(queue.get(guildId)){
+      let youtubeVId = null, option = null;
+      for(let i=2;i<args.length;i++){
+        if(/^http(.*)/.test(args[i])){
+          youtubeVId = args[i].replace(/^https?:\/\/(?:www\.)?(?:youtu\.be\/(.{11})|youtube\.com\/watch\?v=(.{11})(?:.*))/, '$1$2');
+        }
+        if(/^-(.*)/.test(args[i])){
+          option = args[i].replace(/(.*)/, '$1');
+        }
+      }
+      if(option === '-i'){
+        console.log('最優先');
+      }else if(youtubeVId){
+        console.log('キューに追加');
+        if(queue.get(guildId).audioList.length === 0){
+          queue.get(guildId).audioList.push(youtubeVId);
+        }else{
+          const pos = queue.get(guildId).audioList.indexOf(youtubeVId);
+          if(pos !== -1){
+            queue.get(guildId).audioList.splice(pos, 1);
+          }
+          queue.get(guildId).audioList.push(youtubeVId);
+        }
+        console.log(queue.get(guildId).audioList);
+      }else{
+        console.log('キューを表示');
+      }
+    }else{
+      m.channel.send('先に`!r join`コマンドでボイスチャンネルに接続させてください');
     }
   }
 });
