@@ -29,10 +29,11 @@ const queue = new Map();
 // メッセージ受信時の処理
 Client.on('message', m=>{
   // サーバー以外の発言･bot自身の発言･指定プレフィックスから始まらない発言を無視
-  if(!m.guild || m.author.bot || !m.content.startsWith(process.env.PREFIX)) return;
-
   const args = m.content.split(' ');
-  const command = args.slice(1, 2).join().toLowerCase();
+  const prefix = args.splice(0, 1).join();
+  if(!m.guild || m.author.bot || prefix !== process.env.PREFIX) return;
+
+  const command = args.slice(0, 1).join().toLowerCase();
   const guildId = m.guild.id;
 
   // joinコマンド
@@ -69,7 +70,7 @@ Client.on('message', m=>{
   else if(command === 'queue'){
     if(queue.get(guildId)){
       let youtubeVId = null, option = null;
-      for(let i=2;i<args.length;i++){
+      for(let i=0;i<args.length;i++){
         if(/^http(.*)/.test(args[i])){
           youtubeVId = args[i].replace(/^https?:\/\/(?:www\.)?(?:youtu\.be\/(.{11})|youtube\.com\/watch\?v=(.{11})(?:.*))/, '$1$2');
         }
@@ -95,7 +96,7 @@ Client.on('message', m=>{
         console.log('キューを表示');
       }
     }else{
-      m.channel.send('先に`!r join`コマンドでボイスチャンネルに接続させてください');
+      m.channel.send('先に`' + process.env.PREFIX + ' join`コマンドでボイスチャンネルに接続させてください');
     }
   }
 });
