@@ -55,18 +55,18 @@ long@^4.0.0:
   resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
   integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
 
-m3u8stream@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/m3u8stream/-/m3u8stream-0.6.2.tgz#c2c62ddce88156d80378dd59be010c8b8e9d120b"
-  integrity sha512-WsuM2bd5pPN80xvfrB+1DZqr4M7+kJl8byi6+ZCy6cmVjEiHhmr/desN53Ngsa6Hs13kYumeVgT4wL0oIJ+v6g==
+m3u8stream@^0.6.3:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/m3u8stream/-/m3u8stream-0.6.5.tgz#a41713cb7144f8fe1eb944d32a8848be8cb2c951"
+  integrity sha512-QZCzhcfUliZfsOboi68QkNcMejPKTEhxE+s1TApvHubDeR8ythm4ViWuYFqgUwZeoHe8q0nsPxOvA3lQvdSzyg==
   dependencies:
-    miniget "^1.4.0"
+    miniget "^1.6.1"
     sax "^1.2.4"
 
-miniget@^1.4.0:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/miniget/-/miniget-1.5.1.tgz#4f93840d5aaed21634cd12fd07d22f7d64e9d570"
-  integrity sha512-KJ3AyIVZ76QuWAq43BWjkK+jLdhxhy3s4tsdg9Je91+cIFkeOSW2VEj2lSeKw50CPu1eCCkSbiQEBKL36mpA5w==
+miniget@^1.6.1, miniget@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/miniget/-/miniget-1.7.0.tgz#a29eb79ebff479e9efafd271616981c603987875"
+  integrity sha512-yrgaDSMRzrfYTkudB4Y6xK8pCb7oAH2bvfv6iPY2m6CedZfs9yK4b/ofh0Vzv08hCYXH/HHkoS8an6fkWtOAQA==
 
 ms@2.0.0:
   version "2.0.0"
@@ -146,12 +146,12 @@ ws@^4.0.0:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
 
-ytdl-core@^0.28.3:
-  version "0.28.3"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.28.3.tgz#3daa3e7c0779298dfce3cd2bc17a1727094ea096"
-  integrity sha512-PbUEY7viwO6mJjsZN3vpnjNfpB747rNva3YbOJ9iTM9MtDt2CFcZov4K3Agf22pt/EuPc4zKnk/97K7TeS04yw==
+ytdl-core@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-2.0.1.tgz#10987476aea27fc87b2053aa59479f5608a6f33f"
+  integrity sha512-PZBcVzQpkBxi9OQh9I4QIrYNmkbM/zh4QJQuxE8I6RojLUVYkkps5iLYquE3H+pwmBXtEXQMDJfVRajgdiz+iA==
   dependencies:
     html-entities "^1.1.3"
-    m3u8stream "^0.6.2"
-    miniget "^1.4.0"
+    m3u8stream "^0.6.3"
+    miniget "^1.7.0"
     sax "^1.1.3"
