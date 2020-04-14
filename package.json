@@ -6,7 +6,7 @@
   "author": "show0317sw <tunakan_8584@yahoo.co.jp>",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.2",
+    "discord.js": "^12.0.0",
     "dotenv": "^6.2.0",
     "node-opus": "^0.3.1",
     "ytdl-core": "^0.28.3"
